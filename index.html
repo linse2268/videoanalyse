@@ -1428,16 +1428,15 @@ function drawChart(data, cuts) {
 
   function drawLine(
     key,
-    lineWidth
+    lineWidth,
+    color
   ) {
 
     chartCtx.beginPath();
 
-    chartCtx.lineWidth =
-      lineWidth;
+    chartCtx.lineWidth = lineWidth;
 
-    chartCtx.strokeStyle =
-      "#ffffff";
+    chartCtx.strokeStyle = color;
 
 
     data.forEach((item, index) => {
@@ -1471,7 +1470,8 @@ function drawChart(data, cuts) {
 
   drawLine(
     "contrast",
-    2
+    2,
+    "#4CAF50"
   );
 
 
@@ -1486,7 +1486,8 @@ function drawChart(data, cuts) {
 
   drawLine(
     "motion",
-    2
+    2,
+    "#2196F3"
   );
 
 
@@ -1501,7 +1502,8 @@ function drawChart(data, cuts) {
 
   drawLine(
     "cutScore",
-    1
+    1,
+    "#FF5252"
   );
 
 
