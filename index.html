@@ -637,11 +637,7 @@ analyzeBtn.addEventListener("click", async () => {
     isAnalyzing = false;
     analyzeBtn.disabled = false;
     
-    const endTime = performance.now();
-
-    const analysisTime = (endTime - startTime) / 1000;
-
-    console.log(`Analysezeit: ${analysisTime.toFixed(2)} Sekunden`);
+    
   }
 });
 
@@ -1153,10 +1149,16 @@ function finishAnalysis() {
   renderCutList(cuts);
 
   drawChart(results, cuts);
+  
+  const endTime = performance.now();
+
+    const analysisTime = (endTime - startTime) / 1000;
+
+    console.log(`Analysezeit: ${analysisTime.toFixed(2)} Sekunden`);
 
 
   statusEl.textContent =
-    `Analyse abgeschlossen · ${results.length} Frames untersucht. Zeit: ${analysisTime}`;
+    `Analyse abgeschlossen · ${results.length} Frames untersucht. Analysezeit: ${analysisTime.toFixed(2)} Sekunden`;
 }
 
 
