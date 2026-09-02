@@ -617,6 +617,8 @@ analyzeBtn.addEventListener("click", async () => {
   statusEl.textContent =
     "Analyse wird vorbereitet …";
 
+	const startTime = performance.now();
+
   try {
 
     await analyzeVideo();
@@ -634,7 +636,12 @@ analyzeBtn.addEventListener("click", async () => {
 
     isAnalyzing = false;
     analyzeBtn.disabled = false;
+    
+    const endTime = performance.now();
 
+    const analysisTime = (endTime - startTime) / 1000;
+
+    console.log(`Analysezeit: ${analysisTime.toFixed(2)} Sekunden`);
   }
 });
 
@@ -1149,7 +1156,7 @@ function finishAnalysis() {
 
 
   statusEl.textContent =
-    `Analyse abgeschlossen · ${results.length} Frames untersucht.`;
+    `Analyse abgeschlossen · ${results.length} Frames untersucht. Zeit: ${analysisTime}`;
 }
 
 
