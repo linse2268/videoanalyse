@@ -617,7 +617,7 @@ analyzeBtn.addEventListener("click", async () => {
   statusEl.textContent =
     "Analyse wird vorbereitet …";
 
-	const startTime = performance.now();
+
 
   try {
 
@@ -649,6 +649,8 @@ analyzeBtn.addEventListener("click", async () => {
 */
 
 async function analyzeVideo() {
+  
+  const startTime = performance.now();
 
   const duration = video.duration;
 
