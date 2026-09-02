@@ -503,6 +503,7 @@ let previousFrame = null;
 let isAnalyzing = false;
 let analysisStartTime = 0;
 
+
 /*
   ------------------------------------------------------------
   Datei auswählen
@@ -609,6 +610,8 @@ analyzeBtn.addEventListener("click", async () => {
 
   analyzeBtn.disabled = true;
 
+	analysisStartTime = performance.now();
+
   results = [];
   previousFrame = null;
 
@@ -650,7 +653,7 @@ analyzeBtn.addEventListener("click", async () => {
 
 async function analyzeVideo() {
   
-	analysisStartTime = performance.now();
+
 
   const duration = video.duration;
 
@@ -1156,8 +1159,9 @@ function finishAnalysis() {
 
 
 
-  statusEl.textContent =
-    `Analyse abgeschlossen · ${results.length} Frames untersucht. Analysezeit: ${analysisTime.toFixed(2)} Sekunden`;
+  const analysisTime = (performance.now() - analysisStartTime) / 1000;
+
+	statusEl.textContent = `Analyse abgeschlossen · ${results.length} Frames untersucht. Analysezeit: ${analysisTime.toFixed(1).replace(".", ",")} Sekunden`;
 }
 
 
