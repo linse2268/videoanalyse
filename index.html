@@ -501,7 +501,7 @@ let videoURL = null;
 let results = [];
 let previousFrame = null;
 let isAnalyzing = false;
-
+let analysisStartTime = 0;
 
 /*
   ------------------------------------------------------------
@@ -650,7 +650,7 @@ analyzeBtn.addEventListener("click", async () => {
 
 async function analyzeVideo() {
   
-  const startTime = performance.now();
+	analysisStartTime = performance.now();
 
   const duration = video.duration;
 
@@ -1152,11 +1152,8 @@ function finishAnalysis() {
 
   drawChart(results, cuts);
   
-  const endTime = performance.now();
+  
 
-    const analysisTime = (endTime - startTime) / 1000;
-
-    console.log(`Analysezeit: ${analysisTime.toFixed(2)} Sekunden`);
 
 
   statusEl.textContent =
