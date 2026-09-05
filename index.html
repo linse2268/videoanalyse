@@ -677,9 +677,12 @@ async function analyzeVideo() {
 
     const time = i / SAMPLE_FPS;
 
-	if (time >= duration) {
-	  break;
-	}
+    // Stoppen, wenn das Ende des Videos erreicht ist
+    if (time >= duration) {
+      progressBar.style.width = "100%";
+      statusEl.textContent = "Analyse 100 %";
+      break;
+    }
 
     await seekVideo(time);
 
@@ -753,15 +756,10 @@ async function analyzeVideo() {
       Fortschrittsanzeige.
     */
 
-    const progress =
-      ((i + 1) / totalSamples) * 100;
+    const progress = Math.min(100, (time / duration) * 100);
 
-    progressBar.style.width =
-      progress.toFixed(1) + "%";
-
-
-    statusEl.textContent =
-      `Analyse ${Math.round(progress)} %`;
+    progressBar.style.width = progress.toFixed(1) + "%";
+    statusEl.textContent = `Analyse ${Math.round(progress)} %`;
 
 
     /*
