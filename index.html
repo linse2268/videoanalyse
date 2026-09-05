@@ -369,7 +369,7 @@
     <input id="fileInput" type="file" accept="video/*">
   </label>
 
-  <video id="video" controls playsinline preload="metadata"></video>
+  <video id="video" playsinline preload="metadata"></video>
 
   <div class="controls">
     <button id="analyzeBtn" disabled>
@@ -675,11 +675,11 @@ async function analyzeVideo() {
 
   for (let i = 0; i < totalSamples; i++) {
 
-    const time =
-      Math.min(
-        duration - 0.001,
-        i / SAMPLE_FPS
-      );
+    const time = i / SAMPLE_FPS;
+
+	if (time >= duration) {
+	  break;
+	}
 
     await seekVideo(time);
 
